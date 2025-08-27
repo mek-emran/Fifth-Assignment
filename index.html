@@ -14,22 +14,22 @@
     
 </head>
 <body>
-    <div class="flex justify-between p-3 sm:w-[600px] lg:w-[1500px]  mx-auto items-center">
-        <div class="flex items-center gap-2">
+    <div class="flex justify-between p-3  sm:w-[600px] lg:w-[1500px]  mx-auto items-center">
+        <div class="flex items-center lg:gap-2">
             <img class="h-[70px]" src="./assets/logo.png" alt="">
-            <h3 class=" text-xl p-2 font-bold text-[#006747]">Emergency <br>Service</h3>
+            <h3 class=" lg:text-xl p-2 font-bold text-[#006747]">Emergency <br>Service</h3>
         </div>
-        <div class="flex gap-5 p-2  ">
-        <div class="flex bg-[#068021]/20 p-3 rounded-3xl gap-2 lg:w-[123px] justify-center items-center">
-            <h2 class="font-bold"><span>0</span></h2>
+        <div class="flex gap-5 p-2 justify-center items-center">
+        <div class="flex bg-[#068021]/20 p-3 rounded-3xl gap-2 lg:w-[123px]  justify-center items-center">
+            <h2 class="font-bold"><span id="heart-count">0</span></h2>
             <img class="sm:h-[20px] h-[30px] justify-center" src="./assets/heart.png" alt="">
         </div>
-        <div class="flex bg-[#41FF6B]/10 p-3 rounded-3xl gap-2 lg:w-[123px] justify-center items-center">
-            <h2 class="font-bold"><span>100</span></h2>
-            <img class="sm:h-[20px] lg:h-[30px]" src="./assets/coin.png" alt="">
+        <div class="flex bg-[#41FF6B]/10 p-3 rounded-3xl gap-2 lg:w-[123px] sm:w-[60px] justify-center items-center">
+            <h2 class="font-bold"><span id="coin-count">100</span></h2>
+            <img class="sm:h-[20px] h-[30px] justify-center" src="./assets/coin.png" alt="">
         </div>
         <div class="text-center">
-            <h2 class="font-bold bg-[#00A63E]/70 lg:w-[123px]  p-3 rounded-3xl gap-2"><span>0</span> Copy</h2>
+            <h2 class="font-bold bg-[#00A63E]/70 lg:w-[123px] sm:w-[80px]  p-3 rounded-3xl gap-2"><span id="copy-count">0</span> Copy</h2>
         </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
         <div class=" p-3 bg-white shadow-sm  lg:w-[350px] rounded-2xl">
             <div class="flex justify-between  items-center">
             <img class="h-[32px] w-[32px] bg-[#FF4141] p-1 rounded-xl" src="./assets/emergency.png" alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i id="heart-btn" class="fa-regular fa-heart "></i>
         </div>
         <div class="mt-3">
             <h3 class="font-bold text-xl">National Emergency Num</h3>
@@ -58,14 +58,14 @@
         </div>
         <div class="flex justify-between mt-3">
             
-            <button class="p-2 border-1 w-[45%] rounded-xl "><span><i class="fa-regular fa-copy"></i></span>Copy</button>
-            <button class="p-2 w-[45%] rounded-xl bg-[#FF4141]"><span><i class="fa-solid fa-phone"></i></span> Call</button>
+            <button id="copy-btn" class="p-2 border-1 w-[45%] rounded-xl "><span><i class="fa-regular fa-copy"></i></span>Copy</button>
+            <button id="Emergency-call" class="p-2 w-[45%] rounded-xl bg-[#FF4141]"><span><i class="fa-solid fa-phone"></i></span> Call</button>
         </div>
         </div>
         <div class=" p-3 bg-white shadow-sm  lg:w-[350px] rounded-2xl">
             <div class="flex justify-between  items-center">
             <img class="h-[32px] w-[32px] bg-[#FFE3E2] p-1 rounded-xl" src="./assets/police.png" alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i id="heart-btn" class="fa-regular fa-heart"></i>
         </div>
         <div class="mt-3">
             <h3 class="font-bold text-xl">Police Helpline Number</h3>
@@ -84,7 +84,7 @@
         <div class=" p-3 bg-white shadow-sm  lg:w-[350px] rounded-2xl">
             <div class="flex justify-between  items-center">
             <img class="h-[32px] w-[32px] bg-[#FFE3E2] p-1 rounded-xl" src="./assets/fire-service.png" alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i id="heart-btn" class="fa-regular fa-heart"></i>
         </div>
         <div class="mt-3">
             <h3 class="font-bold text-xl">Fire Service Number</h3>
@@ -103,7 +103,7 @@
         <div class=" p-3 bg-white shadow-sm  lg:w-[350px] rounded-2xl">
             <div class="flex justify-between  items-center">
             <img class="h-[32px] w-[32px] bg-[#FFE3E2] p-1 rounded-xl" src="./assets/ambulance.png" alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i id="heart-btn" class="fa-regular fa-heart"></i>
         </div>
         <div class="mt-3">
             <h3 class="font-bold text-xl">Ambulance Service</h3>
@@ -122,7 +122,7 @@
         <div class=" p-3 bg-white shadow-sm  lg:w-[350px] rounded-2xl">
             <div class="flex justify-between  items-center">
             <img class="h-[32px] w-[32px] bg-[#FFE3E2] p-1 rounded-xl" src="./assets/emergency.png" alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i id="heart-btn" class="fa-regular fa-heart"></i>
         </div>
         <div class="mt-3">
             <h3 class="font-bold text-xl">Women & Child Helpline</h3>
@@ -141,7 +141,7 @@
         <div class=" p-3 bg-white shadow-sm  lg:w-[350px] rounded-2xl">
             <div class="flex justify-between  items-center">
             <img class="h-[32px] w-[32px] bg-[#FFE3E2] p-1 rounded-xl" src="./assets/emergency.png" alt="">
-            <i class="fa-regular fa-heart"></i>
+            <i id="heart-btn" class="fa-regular fa-heart"></i>
         </div>
         <div class="mt-3">
             <h3 class="font-bold text-xl">Anti-Corruption Helpline</h3>
@@ -163,13 +163,13 @@
    
 
     <div>
-        <div class="bg-white min-h-[550px] sm:mt-3 lg:p-3 lg:w-[350px] border-1 rounded-2xl">
+        <div class="  bg-white min-h-[550px] sm:mt-3 lg:p-3 lg:w-[350px] border-1 rounded-2xl">
         <div class="flex justify-between p-3 items-center font-semibold">
             <h3><span><i class="fa-solid fa-clock"></i></span> Call History</h3>
-        <button class="p-2 w-[100px]  rounded-3xl bg-[#00A63E]">Clear</button>
+        <button id="clear-btn" class="p-2 w-[100px]  rounded-3xl bg-[#00A63E]">Clear</button>
         </div>
-        <div class="flex justify-between rounded-2xl items-center p-3 bg-[#FFF6F6]">
-            <div>
+        <div id="History-list" class="grid grid-cols-1 flex justify-between rounded-2xl items-center  p-3 bg-[#FFF6F6]">
+            <div id="History-item" class="flex justify-between">
             <h2 class="font-semibold">Fire Service Number</h2>
             <h3><span>999</span></h3>
         </div>
@@ -181,5 +181,6 @@
 
     </div>
     </div>
+    <script src="/index.js"></script>
 </body>
 </html>
