@@ -1,96 +1,102 @@
-// document.getElementById("Emergency-call").addEventListener("click", function() {
-//     alert("Calling Emergency Services...");
-// });
+// heart iconn
+// সব heart-btn গুলোকে ধরার জন্য class ব্যবহার করছি
+const heartButtons = document.querySelectorAll('.heart-btn');
+const heartCountSpan = document.getElementById('heart-count');
+let heartCount = parseInt(heartCountSpan.textContent);
+heartButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        heartCount++; 
+        heartCountSpan.textContent = heartCount; // UI তে দেখাই
 
-// const heartBtn = document.getElementById("heart-btn");
-//   const heartCount = document.getElementById("heart-count-btn");
+        
+        button.classList.remove('fa-regular');
+        button.classList.add('fa-solid');
+        button.style.color = '#FF4141'; // চাইলে রঙও দিতে পারেন
+    });
+});
 
-//   heartBtn.addEventListener("click", function () {
-//     let count = parseInt(heartCount.textContent) || 0;
-//     count++;
-//     heartCount.textContent = count;
-//   });
+// copy text
+// Copy বাটনগুলো ধরছি
+const copyButtons = document.querySelectorAll('.copy-btn');
+const copyCountSpan = document.getElementById('copy-count');
+let copyCount = parseInt(copyCountSpan.textContent);
 
-let count = 0;
-  const heartBtn = document.getElementById("heart-btn");
-  const countDisplay = document.getElementById("heart-count");
-  
-  heartBtn.addEventListener("click", function () {
-    count++;
-    countDisplay.innerText = count;
-  });
+// প্রতিটি Copy বাটনে ইভেন্ট লিসেনার যোগ করছি
+copyButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // parent card খুঁজে বের করি
+        const card = button.closest('.p-3');
 
-  let count2 = 0;
-    const copyBtn =document.getElementById("copy-btn");
-    const countDisplay2 = document.getElementById("copy-count");
-    copyBtn.addEventListener("click", function () {
-        alert("National Emergency Num  999");
-        count2++;
-        countDisplay2.innerText = count2;
+        // card এর ভিতরের দ্বিতীয় h3 থেকে নাম্বার নিই
+        const numberElement = card.querySelectorAll('h3')[1]; // দ্বিতীয় h3
+        const numberToCopy = numberElement.textContent.trim();
 
-    })
+        // ক্লিপবোর্ডে কপি করি
+        navigator.clipboard.writeText(numberToCopy).then(() => {
+            // কপি সফল হলে count বাড়াই
+            copyCount++;
+            copyCountSpan.textContent = copyCount;
 
-//      let coin = 100; // শুরুতে ১০০ কয়েন
+            // alert দেখাই
+            alert(`National Emergency Num (${numberToCopy})`);
+        }).catch(err => {
+            alert('Copy failed ❌');
+            console.error('Clipboard error:', err);
+        });
+    });
+});
 
-//   const coinDisplay = document.getElementById("coin-count");
-//   const emergencyBtn = document.getElementById("Emergency-call");
 
-//   emergencyBtn.addEventListener("click", function () {
-//     alert("Calling Emergency Services...");
-//     if (coin >= 20) {
-//       coin -= 20;
-//     } else {
-//       coin = 0; // যেন নেগেটিভ না হয়
-//     }
-//     coinDisplay.innerText = coin;
-//   });
+// Emergency Call 
+const callButtons = document.querySelectorAll('.Emergency-call');
+const coinCountSpan = document.getElementById('coin-count');
+const historyList = document.getElementById('History-list');
+const clearBtn = document.getElementById('clear-btn');
 
-// let coin = 100;
-// const coinDisplay = document.getElementById("coin-count");
-// const emergencyBtn = document.getElementById("Emergency-call");
-// const historyList = document.getElementById("History-item");
+// coin count শুরু
+let coinCount = parseInt(coinCountSpan.textContent);
 
-// emergencyBtn.addEventListener("click", function () {
-//   if (coin >= 20) {
-//     coin -= 20;
-//     coinDisplay.innerText = coin;
-//     // নতুন ইতিহাস তৈরি
-//     const historyItem = document.createElement("div");
-//     historyItem.className = "flex justify-between items-center p-3 rounded-xl bg-[#FFF6F6] shadow";
-//     historyItem.innerText = `📞 Emergency Call used - 20 coins deducted`;
-//     // ইতিহাসে যোগ করো
-//     historyList.appendChild(historyItem);
-//   } 
-//   else {
-//     alert("❌ পর্যাপ্ত কয়েন নেই!");
-//   }
-// });
+// প্রতিটি Call বাটনে ইভেন্ট লিসেনার
+callButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const card = button.closest('.p-3');
+        const serviceName = card.querySelector('h3.font-bold.text-xl').textContent.trim();
+        const serviceNumber = card.querySelectorAll('h3')[1].textContent.trim();
 
-let coin = 100;
+        // coin কমানো
+        if (coinCount >= 20) {
+            coinCount -= 20;
+            coinCountSpan.textContent = coinCount;
+        } else {
+            alert("Not enough coins to make a call.");
+            return;
+        }
 
-const coinDisplay = document.getElementById("coin-count");
-const emergencyBtn = document.getElementById("Emergency-call");
-const historyList = document.getElementById("History-list");
+        // সময় বের করা
+        const timeNow = new Date().toLocaleTimeString();
 
-emergencyBtn.addEventListener("click", function () {
-  if (coin >= 20) {
-    coin -= 20;
-    coinDisplay.innerText = coin;
+        // হিস্ট্রি আইটেম তৈরি
+        const historyItem = document.createElement('div');
+        historyItem.className = "grid grid-cols-1 mt-5 bg-white p-3 rounded-xl shadow-sm";
 
-    // নতুন History-item তৈরি
-    const newHistoryItem = document.createElement("div");
-    newHistoryItem.id = "History-item"; // তোমার ডিজাইন অনুযায়ী ID
-    newHistoryItem.className = "flex border-1 h-[50px] justify-between rounded-2xl items-center p-3 bg-[#FFF6F6]";
+        historyItem.innerHTML = `
+            <div class="flex justify-between">
+                <h2 class="font-semibold">${serviceName}</h2>
+                <h3><span>${serviceNumber}</span></h3>
+            </div>
+            <div class="text-right text-sm text-gray-500 mt-2">
+                <span>${timeNow}</span>
+            </div>
+        `;
 
-    // ভিতরের HTML বসানো
-    newHistoryItem.innerHTML = `
-      <h2 class="font-semibold ">Fire Service Number</h2>
-      <h3><span>999</span></h3>
-    `;
+        historyList.appendChild(historyItem);
 
-    // ইতিহাসে যোগ করো
-    historyList.appendChild(newHistoryItem);
-  } else {
-    alert("❌ পর্যাপ্ত কয়েন নেই!");
-  }
+        // alert দেখানো
+        alert(`📞 Call placed to ${serviceName}`);
+    });
+});
+
+// Clear Button 
+clearBtn.addEventListener('click', function () {
+    historyList.innerHTML = ''; 
 });
